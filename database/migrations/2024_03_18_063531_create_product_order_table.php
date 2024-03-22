@@ -14,12 +14,10 @@ return new class extends Migration
         Schema::create('product_order', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('products_id')->unsigned();
-            $table->bigInteger('users_id')->unsigned();
-            $table->bigInteger('count_in_cart');
+            $table->bigInteger('count');
             $table->bigInteger('id_order')->unsigned()->nullable();
             $table->bigInteger('val');
             $table->foreign('products_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_order')->references('id')->on('order')->onDelete('set null');
             $table->timestamps();
         });

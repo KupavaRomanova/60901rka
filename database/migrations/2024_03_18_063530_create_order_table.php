@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('users_id_order')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('adress', 255);
             $table->time('date_of_purchase')->useCurrent();
             $table->date('date_of_receipt');
             $table->bigInteger('val');
-            $table->foreign('users_id_order')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
