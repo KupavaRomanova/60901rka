@@ -44,4 +44,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    // отношение "один ко многим" с моделью Product
+    public function products()
+        {
+            return $this->hasMany(Product::class);
+        }
+    
+    // отношение "один ко многим" с моделью Order
+    public function orders()
+        {
+            return $this->hasMany(Order::class);
+        }
 }
