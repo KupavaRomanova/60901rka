@@ -8,7 +8,7 @@
     <p>Category: {{ $product->category->category_name }}</p>
     <p>Description: {{ $product->description }}</p>
     <p>Price: {{ $product->price }}</p>
-    <p>Photo: <img src="{{ URL::asset('/image/' . $product->photo) }}" alt="{{ $product->product_name }}" width="100"></p>
+    <p>Photo: <img src="{{ asset($product->photo) }}" alt="{{ $product->product_name }}" width="100"></p>
     <p>Count: {{ $product->count }}</p>
     <p>Created at: {{ $product->created_at }}</p>
     <p>Updated at: {{ $product->updated_at }}</p>

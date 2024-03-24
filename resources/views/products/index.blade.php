@@ -27,10 +27,18 @@
                     <td>{{ $product->category->category_name }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
-                    <td><img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->product_name }}" width="100"></td>
+                    <td><img src="{{ asset($product->photo) }}" alt="{{ $product->product_name }}" width="100"></td>
                     <td>{{ $product->count }}</td>
                     <td>{{ $product->created_at }}</td>
                     <td>{{ $product->updated_at }}</td>
+                    <td>
+                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Редактировать</a>
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить?')">Удалить</button>
+                    </form>
+                </td>
                 </tr>
             @endforeach
         </tbody>
