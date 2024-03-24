@@ -15,9 +15,13 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
     // Отображение всех товаров
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+
+        $perPage = request('per_page') ?? 5; 
+        $products = Product::paginate($perPage);
+        // $products = Product::paginate();
+        // $products = Product::all();
         return view('products.index', compact('products'));
     }
 

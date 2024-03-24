@@ -1,7 +1,15 @@
 
 
 
-    <h1>Products</h1>
+<h1>Products</h1>
+
+<form action="{{ route('products.index') }}" method="GET">
+    <select name="per_page" onchange="this.form.submit()">
+        <option value="5" {{ request('per_page') == 5 ? 'selected' : '' }}>5</option>
+        <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
+        <option value="15" {{ request('per_page') == 15 ? 'selected' : '' }}>15</option>
+    </select>
+</form>
 
     <table class="table">
         <thead>
@@ -44,3 +52,6 @@
         </tbody>
     </table>
 
+<div >
+    {{ $products->links() }}
+</div>
