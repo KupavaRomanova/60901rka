@@ -8,6 +8,8 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+
 
 class ProductController extends Controller
 {
@@ -118,8 +120,17 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+        // $product->delete();
     
-        return redirect()->route('products.index');
+        // return redirect()->route('products.index');
+
+
+        if (Gate::allows('delete-expensive-product', $product)) {
+            $product->delete();
+    
+            return redirect()->route('products.index');
+        } else {
+            return redirect()->route('error')->with('error', 'Нет прав на удаление');
+        }
     }
 }
