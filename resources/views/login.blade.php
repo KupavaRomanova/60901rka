@@ -1,6 +1,16 @@
-@if (Auth::check())
-    <p>Hello, {{ Auth::user()->name }}</p>
-@else
+
+
+@extends('layout')
+
+@section('content')
+    <h1>Login</h1>
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -18,4 +28,4 @@
             <button type="submit">Login</button>
         </div>
     </form>
-@endif
+@endsection

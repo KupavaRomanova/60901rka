@@ -7,11 +7,11 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('hello');
-});
+})->name('hello');
 
 Route::get('/hello', function () {
     return view('hello', ['title' => 'Crafts']);
-});
+})->name('hello');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/', function () {
     return view('hello');
-});
+})->name('hello');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);

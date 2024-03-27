@@ -1,3 +1,7 @@
+
+@extends('layout')
+
+@section('content')
 <h1>Categories</h1>
 
 <table class="table">
@@ -20,3 +24,4 @@
         @endforeach
     </tbody>
 </table>
+@endsection

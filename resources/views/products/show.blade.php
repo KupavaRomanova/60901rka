@@ -1,5 +1,7 @@
 
+@extends('layout')
 
+@section('content')
 
     <h1>{{ $product->product_name }}</h1>
 
@@ -20,3 +22,4 @@
         @endforeach
     </ul>
 
+    @endsection

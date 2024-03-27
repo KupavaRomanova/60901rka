@@ -118,19 +118,19 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
-    {
-        // $product->delete();
-    
-        // return redirect()->route('products.index');
+public function destroy(Product $product)
+{
+    if (Gate::allows('delete-expensive-product', $product)) {
+        $product->delete();
 
+        session()->flash('status', 'Товар успешно удален!');
 
-        if (Gate::allows('delete-expensive-product', $product)) {
-            $product->delete();
-    
-            return redirect()->route('products.index');
-        } else {
-            return redirect()->route('error')->with('error', 'Нет прав на удаление');
-        }
+        return redirect()->route('products.index');
+    } else {
+
+        session()->flash('error', 'Нет прав на удаление' );
+
+        return redirect()->route('products.index');
     }
+}
 }

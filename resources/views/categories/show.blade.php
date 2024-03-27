@@ -1,6 +1,8 @@
 
 
+@extends('layout')
 
+@section('content')
     <h1>{{ $category->category_name }}</h1>
 
     <p>ID: {{ $category->id }}</p>
@@ -13,4 +15,4 @@
             <li>{{ $product->product_name }}</li>
         @endforeach
     </ul>
-
+    @endsection

@@ -1,3 +1,6 @@
+@extends('layout')
+
+@section('content')
 <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
@@ -49,3 +52,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>
+@endsection
