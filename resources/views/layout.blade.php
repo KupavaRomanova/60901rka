@@ -14,9 +14,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Войти</a>
-                    </li>
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Войти</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
+                        </li>
+                    @endguest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('hello') }}">Личный кабинет</a>
                     </li>
@@ -43,4 +49,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 </body>
 </html>
-
